@@ -1,3 +1,4 @@
+import datetime
 import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -8,9 +9,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h_04sy0p43e%b3&$_x02mp#=sk1b-e72^o3$8*6f$asm3c86=e'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+AUTH_USER_MODEL = 'accounts.User'
 
 ALLOWED_HOSTS = []
 
@@ -26,14 +28,29 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'knox',
     'accounts',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated']
 }
+
+DEFAULT = {
+    'ALGORITHM': 'HS256'
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1)
+}
+
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:8000"
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,3 +135,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
+"""
+*** Configuration for gmail ***
+
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASWORD')
+"""
