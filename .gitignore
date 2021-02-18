@@ -1,0 +1,4 @@
+static
+blog/__pycache__/
+blog/migrations/__pycache__/
+blogmanager/__pycache__/
