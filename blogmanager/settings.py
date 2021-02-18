@@ -10,11 +10,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h_04sy0p43e%b3&$_x02mp#=sk1b-e72^o3$8*6f$asm3c86=e'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 AUTH_USER_MODEL = 'accounts.User'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'blogmanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangoapiblog',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'NAME': 'dfava3fdeq2ul4',
+        'USER': 'fibfrrjpzduwdt',
+        'PASSWORD': '10fd58e8586c1cb8a2e11e78fd63f6393e765eaa35b8b8ca2c501111c656a35a',
+        'HOST': 'ec2-54-235-139-166.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -135,16 +135,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-
-"""
-*** Configuration for gmail ***
 
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASWORD')
-"""
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
