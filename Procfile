@@ -1,0 +1,1 @@
+web: gunicorn blogmanager.blogmanager.wsgi:application --log-file -
