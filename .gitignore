@@ -1,3 +1,4 @@
+staticfiles
 static
 blog/__pycache__/
 blog/migrations/__pycache__/
